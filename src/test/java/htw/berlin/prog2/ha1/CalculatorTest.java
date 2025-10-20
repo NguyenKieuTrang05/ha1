@@ -88,20 +88,19 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("should display result after calculating the percentage")
-    void testPercentage() {
+    @DisplayName("should change sign to postive when pressing negative key twice")
+    void testChangeOfSign() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(1);
-        calc.pressDigitKey(0);
-        calc.pressUnaryOperationKey("%");
+        calc.pressDigitKey(6);
+        calc.pressNegativeKey();
+        calc.pressNegativeKey();
 
-        String expected = "0.1";
+        String expected = "16";
         String actual = calc.readScreen();
         assertEquals(expected, actual);
     }
-
-
 
     //TODO hier weitere Tests erstellen
 
