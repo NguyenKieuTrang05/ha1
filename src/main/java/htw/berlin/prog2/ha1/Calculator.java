@@ -14,6 +14,7 @@ public class Calculator {
 
     private String latestOperation = "";
 
+    private boolean wasClearedOnce = false;
     /**
      * @return den aktuellen Bildschirminhalt als String
      */
@@ -31,10 +32,13 @@ public class Calculator {
     public void pressDigitKey(int digit) {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
+        wasClearedOnce = false;
+
         if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
 
         screen = screen + digit;
     }
+
 
     /**
      * Empfängt den Befehl der C- bzw. CE-Taste (Clear bzw. Clear Entry).
@@ -45,10 +49,19 @@ public class Calculator {
      * im Ursprungszustand ist.
      */
     public void pressClearKey() {
-        screen = "0";
-        latestOperation = "";
-        latestValue = 0.0;
+            screen = "0";
+            latestOperation = "";
+            latestValue = 0.0;
+            wasClearedOnce = false;
+
     }
+    public double getLatestValue() {
+        return latestValue;
+    }
+    public String getLatestOperation() {
+        return latestOperation;
+    }
+
 
     /**
      * Empfängt den Wert einer gedrückten binären Operationstaste, also eine der vier Operationen

@@ -87,6 +87,8 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    //TODO hier weitere Tests erstellen
+
     @Test
     @DisplayName("should change sign to postive when pressing negative key twice")
     void testChangeOfSign() {
@@ -101,8 +103,30 @@ class CalculatorTest {
         String actual = calc.readScreen();
         assertEquals(expected, actual);
     }
+    
+    @Test
+    @DisplayName("should reset the calculator after pressing clear twice")
+    void testDoubleClearResetCalculator() {
+        Calculator calc = new Calculator();
 
-    //TODO hier weitere Tests erstellen
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+
+        calc.pressClearKey();
+        assertEquals(27, calc.getLatestValue());
+        assertEquals("+", calc.getLatestOperation());
+
+        calc.pressClearKey();
+        String expected = "0";
+        String actual = calc.readScreen();
+        assertEquals(0, calc.getLatestValue());
+        assertEquals("", calc.getLatestOperation());
+        assertEquals(expected, actual);
+
+    }
 
 }
 
