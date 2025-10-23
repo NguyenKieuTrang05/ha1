@@ -119,7 +119,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    
+
     @Test
     @DisplayName("should reset the calculator after pressing clear twice")
     void testDoubleClearResetCalculator() {
