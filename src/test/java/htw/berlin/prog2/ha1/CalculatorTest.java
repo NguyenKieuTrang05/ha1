@@ -103,6 +103,22 @@ class CalculatorTest {
         String actual = calc.readScreen();
         assertEquals(expected, actual);
     }
+    @Test
+    @DisplayName("should do nothing when equals key is pressed without prior operation")
+    void testEqualsKeyWithoutOperation() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(4);
+        calc.pressDigitKey(9);
+        calc.pressEqualsKey();
+
+        String expected = "149";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
     
     @Test
     @DisplayName("should reset the calculator after pressing clear twice")
@@ -127,6 +143,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
 
     }
+
 
 }
 
