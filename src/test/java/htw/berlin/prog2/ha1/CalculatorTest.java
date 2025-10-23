@@ -118,10 +118,8 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-
-
     @Test
-    @DisplayName("should reset the calculator after pressing clear twice")
+    @DisplayName("should only clear screen on first press and reset memory on second press")
     void testDoubleClearResetCalculator() {
         Calculator calc = new Calculator();
 
